@@ -140,4 +140,6 @@ eclf = VotingClassifier(estimators=[('lr', lr_clf), ('rf', rf_clf), ('svc', svc_
 scores = cross_val_score(eclf, train_data, train_label.values.ravel(), cv=5, scoring='accuracy')
 print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std()))
 
+eclf.fit(train_data, train_label.values.ravel())
+
 joblib.dump(eclf, 'model/model.pkl', compress=3)
